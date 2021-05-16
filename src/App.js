@@ -2,21 +2,18 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+
 import Header from "./components/shared/header";
 import Hero from "./components/hero";
 import Section from "./layout/section";
 import Wrapper from "./layout/wrapper";
 import LaunchCard from "./components/lauch-card";
+import Grid from "./components/grid";
 
 const MainWrapper = styled.main`
   display: block;
   position: relative;
   width: 100%;
-
-  .grid {
-    display: flex;
-    flex-wrap: wrap;
-  }
 `;
 
 const ContentSelector = styled.div`
@@ -68,7 +65,7 @@ function App() {
 
         {!loading && (
           <Wrapper>
-            <div className="grid">
+            <Grid>
               {data.launches.map((item, index) => (
                 <LaunchCard
                   key={index.toString()}
@@ -77,7 +74,7 @@ function App() {
                   description={item.details}
                 />
               ))}
-            </div>
+            </Grid>
           </Wrapper>
         )}
       </Section>

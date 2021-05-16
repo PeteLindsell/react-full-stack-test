@@ -5,9 +5,7 @@ import Image from "../image";
 import Lockup from "../lockup";
 
 const LaunchCardWrapper = styled.div`
-  display: block;
   margin-bottom: 30px;
-  margin-left: 20px;
   width: 100%;
 `;
 
