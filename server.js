@@ -16,12 +16,18 @@ app.get("/", (req, res) => {
 });
 
 app.get("/launches", async (req, res, next) => {
+  console.log(req.query);
   try {
     const result = await axios.post(
       "https://api.spacexdata.com/v4/launches/query",
       {
         query: {
           upcoming: false,
+          ...(req.query.q && {
+            $text: {
+              $search: req.query.q,
+            },
+          }),
         },
         options: {
           limit: 50,
