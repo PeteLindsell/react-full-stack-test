@@ -1,23 +1,23 @@
 import { render, screen } from "@testing-library/react";
-import LaunchCard from "./index";
+import Card from "./index";
 
 test("Card displays title", () => {
   const title = "Test title";
-  render(<LaunchCard title={title} />);
+  render(<Card title={title} />);
 
   expect(screen.getByRole("heading")).toHaveTextContent(title);
 });
 
 test("Card displays description", () => {
   const description = "Test description";
-  render(<LaunchCard description={description} />);
+  render(<Card description={description} />);
 
   expect(screen.getByText(description)).toBeInTheDocument();
 });
 
 test("Card displays image", () => {
   const image = "image.jpg";
-  render(<LaunchCard image={image} />);
+  render(<Card image={image} />);
   const displayedImage = document.querySelector("img");
 
   expect(displayedImage.src).toContain(image);

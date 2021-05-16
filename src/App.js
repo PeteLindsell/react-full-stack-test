@@ -2,6 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Header from "./components/shared/header";
 import Hero from "./components/hero";
@@ -9,6 +10,9 @@ import Section from "./layout/section";
 import Wrapper from "./layout/wrapper";
 import LaunchCard from "./components/lauch-card";
 import Grid from "./components/grid";
+import Launches from "./pages/launches";
+import Rockets from "./pages/rockets";
+import Home from "./pages/home";
 
 const MainWrapper = styled.main`
   display: block;
@@ -49,36 +53,29 @@ function App() {
   }, []);
 
   return (
-    <MainWrapper>
-      <Header />
-      <Section>
-        <Hero />
-      </Section>
-      <Section>
-        <ContentSelector>
-          <button>Launches</button>
-          <button>rockets</button>
-        </ContentSelector>
-      </Section>
-      <Section>
-        {loading && <div>loading....</div>}
+    <Router>
+      <MainWrapper>
+        <Header />
+        <Switch>
+          <Route path="/rockets">
+            <Rockets />
+          </Route>
+          <Route path="/launches">
+            <Launches />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
 
-        {!loading && (
-          <Wrapper>
-            <Grid>
-              {data.launches.map((item, index) => (
-                <LaunchCard
-                  key={index.toString()}
-                  image={item.links.patch.small}
-                  title={item.name}
-                  description={item.details}
-                />
-              ))}
-            </Grid>
-          </Wrapper>
-        )}
-      </Section>
-    </MainWrapper>
+        {/* <Section>
+          <ContentSelector>
+            <button>Launches</button>
+            <button>rockets</button>
+          </ContentSelector>
+        </Section> */}
+      </MainWrapper>
+    </Router>
   );
 }
 

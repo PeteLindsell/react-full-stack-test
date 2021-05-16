@@ -4,11 +4,11 @@ import { device } from "../../helpers";
 import Image from "../image";
 import Lockup from "../lockup";
 
-const LaunchCardWrapper = styled.div`
+const CardWrapper = styled.div`
   margin-bottom: 30px;
 `;
 
-const LaunchCardContainer = styled.div`
+const CardContainer = styled.div`
   display: flex;
   flex-direction: column-reverse;
   height: 100%;
@@ -34,21 +34,21 @@ const Content = styled.div`
   flex: 1;
 `;
 
-function LaunchCard(props) {
+function Card(props) {
   return (
-    <LaunchCardWrapper>
-      <LaunchCardContainer>
+    <CardWrapper>
+      <CardContainer>
         <ImagContainer>
           <Image url={props.image} />
         </ImagContainer>
 
         <Content>
           <Lockup text={props.description} tag="h3" title={props.title} />
+          {props.link && <a href={props.link}>View launch on YouTube</a>}
         </Content>
-        {/* Youtube Link ? */}
-      </LaunchCardContainer>
-    </LaunchCardWrapper>
+      </CardContainer>
+    </CardWrapper>
   );
 }
 
-export default LaunchCard;
+export default Card;

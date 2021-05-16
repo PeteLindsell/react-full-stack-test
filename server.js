@@ -54,7 +54,7 @@ app.get("/rockets", async (req, res, next) => {
         }),
         description,
         name,
-        picture: flickr_images[0],
+        image: flickr_images[0],
       })
     );
 
