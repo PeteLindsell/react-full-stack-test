@@ -7,9 +7,9 @@ import Lockup from "../lockup";
 const LaunchCardWrapper = styled.div`
   margin-bottom: 30px;
   width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
 `;
-
-const LaunchCardContainer = styled.div``;
 
 const ImagContainer = styled.div`
   padding: 40px 20px;
@@ -34,16 +34,14 @@ const Content = styled.div`
 function LaunchCard(props) {
   return (
     <LaunchCardWrapper>
-      <LaunchCardContainer>
-        <ImagContainer>
-          <Image url={props.image} />
-        </ImagContainer>
+      <ImagContainer>
+        <Image url={props.image} />
+      </ImagContainer>
 
-        <Content>
-          <Lockup text={props.description} tag="h3" title={props.title} />
-        </Content>
-        {/* Youtube Link ? */}
-      </LaunchCardContainer>
+      <Content>
+        <Lockup text={props.description} tag="h3" title={props.title} />
+      </Content>
+      {/* Youtube Link ? */}
     </LaunchCardWrapper>
   );
 }
